@@ -65,42 +65,43 @@ function addCard(chosen) {
     console.log(selectedCards);
     if (selectedCards.length === 2) {
       console.log('array full, waiting for match function')
-      matched();
+      isItMatched();
+
     }
   }
 };
 
 
 //matched, lock open
-function matched() {
-
+function isItMatched() {
   const isElementClassNameEqual = (a, b) => a.firstElementChild.className === b.firstElementChild.className;
-
   if (isElementClassNameEqual(selectedCards[0], selectedCards[1])) {
     // let select(num) = selectedCards[num].firstElementChild.className;
-
     // if (select(0) === select(1) {
     // if (selectedCards[0].firstElementChild.className === selectedCards[1].firstElementChild.className) {
     console.log('ding ding');
+    nextPick();
   } else {
-    hide();
-    console.log('BUUZZZ');
+    unmatched();
   }
 };
 
 
 //unmatched, remove from list, hide
-//hide card???
-function hide() {
+function unmatched() {
   setTimeout(() => {
     selectedCards.forEach(function(chosen) {
-
-chosen.classList.remove('open', 'show');
-  });
-    selectedCards.length = 0;
-    console.log(selectedCards);
+      chosen.classList.remove('open', 'show');
+    });
+    nextPick();
   }, 1000);
-
+  console.log('BUUZZZ');
 };
+
+//clears array to continue to next two picks
+function nextPick() {
+  selectedCards.length = 0;
+  console.log(selectedCards, 'array empty');
+}
 
 //all cards matched, disply final score
