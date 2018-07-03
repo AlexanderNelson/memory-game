@@ -44,7 +44,6 @@ deck.addEventListener('click', event => {
   if (chosen.className == 'card') {
     flipCard(chosen);
     addCard(chosen);
-    // matched();
   }
 });
 
@@ -66,7 +65,7 @@ function addCard(chosen) {
     if (selectedCards.length === 2) {
       console.log('array full, waiting for match function')
       isItMatched();
-
+      counter();
     }
   }
 };
@@ -102,6 +101,15 @@ function unmatched() {
 function nextPick() {
   selectedCards.length = 0;
   console.log(selectedCards, 'array empty');
-}
+};
 
 //all cards matched, disply final score
+
+//move counter
+let turns = 0;
+
+function counter() {
+	turns++;
+	const movesText = document.querySelector('.moves');
+	movesText.innerHTML = turns;
+};
