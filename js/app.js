@@ -12,17 +12,18 @@ let selectedCards = [];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+  var currentIndex = array.length,
+    temporaryValue, randomIndex;
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
 
-    return array;
+  return array;
 }
 
 
@@ -39,62 +40,63 @@ function shuffle(array) {
 const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
-	const chosen = event.target;
-	if (chosen.className == 'card') {
-		flipCard(chosen);
-		addCard(chosen);
-		// matched();
-	}
+  const chosen = event.target;
+  if (chosen.className == 'card') {
+    flipCard(chosen);
+    addCard(chosen);
+    // matched();
+  }
 });
 
 //show card
 function flipCard(chosen) {
-	if (selectedCards.length < 2) {
-	chosen.classList.toggle('open'); //classList and toggle- https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
-	chosen.classList.toggle('show');
-	}
+  if (selectedCards.length < 2) {
+    chosen.classList.toggle('open'); //classList and toggle- https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+    chosen.classList.toggle('show');
+  }
 };
 
-//hide card???
-function hide() {
-	setTimeout(() => {
-		selectedCards.forEach.classlist.remove('open', 'show');
 
-
-	}, 1000);
-};
 
 // add cards to list
 function addCard(chosen) {
-	if (selectedCards.length < 2) {
-		selectedCards.push(chosen);
-		console.log(selectedCards);
-		if (selectedCards.length === 2) {
-			console.log('array full, waiting for match function')
-			matched();
-		}
-}
+  if (selectedCards.length < 2) {
+    selectedCards.push(chosen);
+    console.log(selectedCards);
+    if (selectedCards.length === 2) {
+      console.log('array full, waiting for match function')
+      matched();
+    }
+  }
 };
 
 
 //matched, lock open
 function matched() {
 
-	const isElementClassNameEqual = (a, b) => a.firstElementChild.className === b.firstElementChild.className;
+  const isElementClassNameEqual = (a, b) => a.firstElementChild.className === b.firstElementChild.className;
 
-	if( isElementClassNameEqual(selectedCards[0], selectedCards[1]) ) {
-	// let select(num) = selectedCards[num].firstElementChild.className;
+  if (isElementClassNameEqual(selectedCards[0], selectedCards[1])) {
+    // let select(num) = selectedCards[num].firstElementChild.className;
 
-	// if (select(0) === select(1) {
-	// if (selectedCards[0].firstElementChild.className === selectedCards[1].firstElementChild.className) {
-		console.log('ding ding');
-	} else {
-		// hide();
-		console.log('BUUZZZ');
-	}
+    // if (select(0) === select(1) {
+    // if (selectedCards[0].firstElementChild.className === selectedCards[1].firstElementChild.className) {
+    console.log('ding ding');
+  } else {
+    hide();
+    console.log('BUUZZZ');
+  }
 };
 
 
 //unmatched, remove from list, hide
+//hide card???
+function hide() {
+  setTimeout(() => {
+    selectedCards.forEach.classlist.remove('open', 'show');
+
+
+  }, 1000);
+};
 
 //all cards matched, disply final score
