@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
+let selectedCards = [];
 
 /*
  * Display the cards on the page
@@ -39,9 +39,19 @@ function shuffle(array) {
 const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
-	const clickTarget = event.target;
-	if (clickTarget.classList.contains('card')) {
-		clickTarget.classList.toggle('open');
-		clickTarget.classList.toggle('show');
+	const chosen = event.target;
+	if (chosen.className == 'card') {
+		flipCard(chosen);
+		addCard(chosen);
 	}
 });
+
+function flipCard(chosen) {
+	chosen.classList.toggle('open');
+	chosen.classList.toggle('show');
+}
+
+function addCard(chosen) {
+	selectedCards.push(chosen);
+	console.log(selectedCards);
+}
