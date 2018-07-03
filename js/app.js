@@ -93,10 +93,12 @@ function matched() {
 //hide card???
 function hide() {
   setTimeout(() => {
-    selectedCards.forEach.classlist.remove('open', 'show');
+    selectedCards.forEach(function(chosen) {
 
-
+chosen.classList.remove('open', 'show');
+  });
   }, 1000);
+
 };
 
 //all cards matched, disply final score
