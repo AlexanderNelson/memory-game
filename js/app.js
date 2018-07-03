@@ -43,15 +43,58 @@ deck.addEventListener('click', event => {
 	if (chosen.className == 'card') {
 		flipCard(chosen);
 		addCard(chosen);
+		// matched();
 	}
 });
 
+//show card
 function flipCard(chosen) {
-	chosen.classList.toggle('open');
+	if (selectedCards.length < 2) {
+	chosen.classList.toggle('open'); //classList and toggle- https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 	chosen.classList.toggle('show');
-}
+	}
+};
 
+//hide card???
+function hide() {
+	setTimeout(() => {
+		selectedCards.forEach.classlist.remove('open', 'show');
+
+
+	}, 1000);
+};
+
+// add cards to list
 function addCard(chosen) {
-	selectedCards.push(chosen);
-	console.log(selectedCards);
+	if (selectedCards.length < 2) {
+		selectedCards.push(chosen);
+		console.log(selectedCards);
+		if (selectedCards.length === 2) {
+			console.log('array full, waiting for match function')
+			matched();
+		}
 }
+};
+
+
+//matched, lock open
+function matched() {
+
+	const isElementClassNameEqual = (a, b) => a.firstElementChild.className === b.firstElementChild.className;
+
+	if( isElementClassNameEqual(selectedCards[0], selectedCards[1]) ) {
+	// let select(num) = selectedCards[num].firstElementChild.className;
+
+	// if (select(0) === select(1) {
+	// if (selectedCards[0].firstElementChild.className === selectedCards[1].firstElementChild.className) {
+		console.log('ding ding');
+	} else {
+		// hide();
+		console.log('BUUZZZ');
+	}
+};
+
+
+//unmatched, remove from list, hide
+
+//all cards matched, disply final score

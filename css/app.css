@@ -101,6 +101,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', end
     font-size: 33px;
 }
 
+
+.wrong {
+    transform: rotate(20deg);
+    background: red;
+}
 /*
  * Styles for the Score Panel
  */
