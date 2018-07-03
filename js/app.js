@@ -97,6 +97,8 @@ function hide() {
 
 chosen.classList.remove('open', 'show');
   });
+    selectedCards.length = 0;
+    console.log(selectedCards);
   }, 1000);
 
 };
