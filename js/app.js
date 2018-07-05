@@ -15,18 +15,18 @@ let matchCount = 0;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-  var currentIndex = array.length,
-    temporaryValue, randomIndex;
+ var currentIndex = array.length,
+  temporaryValue, randomIndex;
 
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
+ while (currentIndex !== 0) {
+  randomIndex = Math.floor(Math.random() * currentIndex);
+  currentIndex -= 1;
+  temporaryValue = array[currentIndex];
+  array[currentIndex] = array[randomIndex];
+  array[randomIndex] = temporaryValue;
+ }
 
-  return array;
+ return array;
 }
 
 
@@ -43,78 +43,78 @@ function shuffle(array) {
 const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
-  const chosen = event.target;
-  if (chosen.className == 'card') {
-    flipCard(chosen);
-    addCard(chosen);
-    recordStartTime();
-  }
+ const chosen = event.target;
+ if (chosen.className == 'card') {
+  flipCard(chosen);
+  addCard(chosen);
+  recordStartTime();
+ }
 });
 
 //show card
 function flipCard(chosen) {
-  if (selectedCards.length < 2) {
-    chosen.classList.toggle('open'); //classList and toggle- https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
-    chosen.classList.toggle('show');
-  }
+ if (selectedCards.length < 2) {
+  chosen.classList.toggle('open'); //classList and toggle- https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+  chosen.classList.toggle('show');
+ }
 };
 
 
 
 // add cards to list
 function addCard(chosen) {
-  if (selectedCards.length < 2) {
-    selectedCards.push(chosen);
-    console.log(selectedCards);
-    if (selectedCards.length === 2) {
-      console.log('array full, waiting for match function')
-      isItMatched();
-      counter();
-    }
+ if (selectedCards.length < 2) {
+  selectedCards.push(chosen);
+  console.log(selectedCards);
+  if (selectedCards.length === 2) {
+   console.log('array full, waiting for match function')
+   isItMatched();
+   counter();
   }
+ }
 };
 
 
 //matched, lock open
 function isItMatched() {
-  const isElementClassNameEqual = (a, b) => a.firstElementChild.className === b.firstElementChild.className;
-  if (isElementClassNameEqual(selectedCards[0], selectedCards[1])) {
-    // let select(num) = selectedCards[num].firstElementChild.className;
-    // if (select(0) === select(1) {
-    // if (selectedCards[0].firstElementChild.className === selectedCards[1].firstElementChild.className) {
-    console.log('ding ding');
-    matchCount ++;
-    console.log('matchCount', matchCount);
-    gameOver();
-    nextPick();
-  } else {
-    unmatched();
-  }
+ const isElementClassNameEqual = (a, b) => a.firstElementChild.className === b.firstElementChild.className;
+ if (isElementClassNameEqual(selectedCards[0], selectedCards[1])) {
+  // let select(num) = selectedCards[num].firstElementChild.className;
+  // if (select(0) === select(1) {
+  // if (selectedCards[0].firstElementChild.className === selectedCards[1].firstElementChild.className) {
+  console.log('ding ding');
+  matchCount++;
+  console.log('matchCount', matchCount);
+  gameOver();
+  nextPick();
+ } else {
+  unmatched();
+ }
 };
 
 //unmatched, remove from list, hide
 function unmatched() {
-  setTimeout(() => {
-    selectedCards.forEach(function(chosen) {
-      chosen.classList.remove('open', 'show');
-    });
-    nextPick();
-  }, 1000);
-  console.log('BUUZZZ');
+ setTimeout(() => {
+  selectedCards.forEach(function(chosen) {
+   chosen.classList.remove('open', 'show');
+  });
+  nextPick();
+ }, 1000);
+ console.log('BUUZZZ');
 };
 
 //clears array to continue to next two picks
 function nextPick() {
-  selectedCards.length = 0;
-  console.log(selectedCards, 'array empty');
+ selectedCards.length = 0;
+ console.log(selectedCards, 'array empty');
 };
 
 //all cards matched, disply final score
 function gameOver() {
-	if (matchCount === 4) {
-		recordStopTime();
-		calculateTimePlayed();
-	}
+ if (matchCount === 4) {
+  recordStopTime();
+  calculateTimePlayed();
+ }
 }
 
 //move counter
@@ -122,33 +122,49 @@ function gameOver() {
 let turns = 0;
 
 function counter() {
-	turns++;
-	const movesText = document.querySelector('.moves');
-	movesText.innerHTML = turns;
+ turns++;
+ const movesText = document.querySelector('.moves');
+ movesText.innerHTML = turns;
 };
 
 //stars drop as more turns are needed
 function stars() {
-	const starBoard = document.querySelectorAll('.stars li');
-	star.forEach
+ const starBoard = document.querySelectorAll('.stars li');
+ star.forEach
 };
 
 //get time
 let startTime = 0;
 let stopTime = 0;
+
 function recordStartTime() {
-	if (!startTime) {
-		startTime = Date.now();
-		console.log('startTime =', startTime);
-	};
+ if (!startTime) { //prevents startTime reassignment after every clicked card
+  startTime = Date.now();
+  console.log('startTime =', startTime);
+ };
 };
 
 function recordStopTime() {
-	stopTime = Date.now();
-	console.log('stopTime =', stopTime);
+ stopTime = Date.now();
+ console.log('stopTime =', stopTime);
 };
 
 function calculateTimePlayed() {
-	const timePlayed = ((stopTime - startTime)/1000);
-	console.log('timePlayed = ', timePlayed, 'seconds');
+ const timePlayed = ((stopTime - startTime) / 1000); //converts to seconds
+ console.log('timePlayed = ', timePlayed, 'seconds');
+};
+
+//reset game
+let replayButton = document.querySelector('.restart');
+replayButton.addEventListener('click', resetGame);
+let list = document.querySelectorAll('li.card');
+
+function resetGame() {
+ console.log('replayButton clicked');
+ list.forEach(function(card) {
+  card.classList.remove('open', 'show');
+ });
+ console.log('classes remaining', list)
+ // list[0].classList.remove('open', 'show');
+ // console.log('remaining classes', list);
 };
