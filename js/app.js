@@ -3,6 +3,9 @@
  */
 let selectedCards = [];
 
+//matched cards counter
+let matchCount = 0;
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -44,6 +47,7 @@ deck.addEventListener('click', event => {
   if (chosen.className == 'card') {
     flipCard(chosen);
     addCard(chosen);
+    recordStartTime();
   }
 });
 
@@ -79,12 +83,14 @@ function isItMatched() {
     // if (select(0) === select(1) {
     // if (selectedCards[0].firstElementChild.className === selectedCards[1].firstElementChild.className) {
     console.log('ding ding');
+    matchCount ++;
+    console.log('matchCount', matchCount);
+    gameOver();
     nextPick();
   } else {
     unmatched();
   }
 };
-
 
 //unmatched, remove from list, hide
 function unmatched() {
@@ -104,12 +110,45 @@ function nextPick() {
 };
 
 //all cards matched, disply final score
+function gameOver() {
+	if (matchCount === 4) {
+		recordStopTime();
+		calculateTimePlayed();
+	}
+}
 
 //move counter
+
 let turns = 0;
 
 function counter() {
 	turns++;
 	const movesText = document.querySelector('.moves');
 	movesText.innerHTML = turns;
+};
+
+//stars drop as more turns are needed
+function stars() {
+	const starBoard = document.querySelectorAll('.stars li');
+	star.forEach
+};
+
+//get time
+let startTime = 0;
+let stopTime = 0;
+function recordStartTime() {
+	if (!startTime) {
+		startTime = Date.now();
+		console.log('startTime =', startTime);
+	};
+};
+
+function recordStopTime() {
+	stopTime = Date.now();
+	console.log('stopTime =', stopTime);
+};
+
+function calculateTimePlayed() {
+	const timePlayed = ((stopTime - startTime)/1000);
+	console.log('timePlayed = ', timePlayed, 'seconds');
 };
