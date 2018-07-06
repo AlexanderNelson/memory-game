@@ -5,6 +5,7 @@ let selectedCards = [];
 
 //matched cards counter
 let matchCount = 0;
+let list = document.querySelectorAll('li.card');
 
 /*
  * Display the cards on the page
@@ -40,6 +41,14 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+ startGame(); //comment out for tile test intro
+
+ function startGame() {
+ 	resetGame();
+ 	console.log('***start sequence initiated***')
+ };
+
 const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
@@ -84,6 +93,7 @@ function isItMatched() {
     selectedCards[1].classList.toggle('match');
     console.log('picked cards', selectedCards[0], selectedCards[1])
     console.log('ding ding');
+    // alert('DING DING! You got a match! OMG!!!');
     matchCount++;
     console.log('matchCount', matchCount);
     gameOver();
@@ -115,6 +125,7 @@ function gameOver() {
   if (matchCount === 4) {
     recordStopTime();
     calculateTimePlayed();
+    launchPlayerStats();
   }
 }
 
@@ -158,7 +169,7 @@ function calculateTimePlayed() {
 //reset game
 let replayButton = document.querySelector('.restart');
 replayButton.addEventListener('click', resetGame);
-let list = document.querySelectorAll('li.card');
+
 
 function resetGame() {
   console.log('replayButton clicked');
@@ -169,3 +180,11 @@ function resetGame() {
   // list[0].classList.remove('open', 'show');
   // console.log('remaining classes', list);
 };
+
+function toggleStats() {
+	const statsBackground = document.querySelector('.stats-background');
+	statsBackground.classList.toggle('hide');
+};
+
+toggleStats()
+toggleStats()
