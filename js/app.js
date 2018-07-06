@@ -163,7 +163,7 @@ let list = document.querySelectorAll('li.card');
 function resetGame() {
   console.log('replayButton clicked');
   list.forEach(function(card) {
-    card.classList.remove('open', 'show');
+    card.classList.remove('open', 'show', 'match');
   });
   console.log('classes remaining', list)
   // list[0].classList.remove('open', 'show');

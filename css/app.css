@@ -1,132 +1,170 @@
 html {
-box-sizing:border-box;
+box-sizing: border-box;
 }
-
-*,::before,::after {
-box-sizing:inherit;
-transition:all .3s;
+*, *::before, *::after {
+box-sizing: inherit;
+transition: all 0.3s;
 }
-
-html,body {
-height:100%;
-margin:0;
-padding:0;
-width:100%;
+html, body {
+width: 100%;
+height: 100%;
+margin: 0;
+padding: 0;
 }
-
 body {
-font-family:Coda, cursive;
+/* background: #fff url('../img/geometry2.png');
+*/
+ /* Background pattern from Subtle Patterns */
+ font-family: 'Coda', cursive;
 }
-
 .container {
-align-items:center;
-display:flex;
-flex-direction:column;
-justify-content:center;
-overflow:hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+overflow: hidden;
 }
-
+.container {
+}
 .sliding-background {
-animation:slide 360s linear infinite;
-background:url(../img/geometry5.png) repeat-x;
-background-repeat:repeat;
-height:1150px;
-position:absolute;
-width:5076px;
-z-index:-1;
+background: url("../img/geometry5.png") repeat-x;
+position: absolute;
+background-repeat: repeat;
+z-index: -1;
+height: 1150px;
+width: 5076px;
+animation: slide 360s linear infinite;
 }
-
-100% {
-transform:translate3d(-1692px,0,0);
+@keyframes slide {
+0% {
+transform: translate3d(0, 0, 0);
 }
-
+ 100% {
+transform: translate3d(-1692px, 0, 0);
+}
+}
+/* * Styles for the deck of cards */
 .deck {
-align-items:center;
-background:linear-gradient(135deg,rgba(235,241,246,1) 0 50% 51% 100%;
-border-radius:10px;
-box-shadow:12px 15px 20px 0 rgba(46,61,73,0.5);
-display:flex;
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebf1f6',endColorstr='#d5ebfb',GradientType=1);
-flex-wrap:wrap;
-justify-content:space-between;
-margin:0 0 3em;
-min-height:680px;
-padding:32px;
-width:660px;
+width: 660px;
+min-height: 680px;
+background: -moz-linear-gradient(-45deg, rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+/* FF3.6-15 */
+ background: -webkit-linear-gradient(-45deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
+/* Chrome10-25,Safari5.1-6 */
+ background: linear-gradient(135deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
+/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=1 );
+/* IE6-9 fallback on horizontal gradient */
+ padding: 32px;
+border-radius: 10px;
+box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+margin: 0 0 3em;
 }
-
 .deck .card {
-align-items:center;
-background:linear-gradient(135deg,rgba(235,241,246,1) 0 50% 51% 100%;
-border-radius:8px;
-box-shadow:5px 2px 20px 0 rgba(46,61,73,0.5);
-color:#fff;
-cursor:pointer;
-display:flex;
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebf1f6',endColorstr='#d5ebfb',GradientType=1);
-font-size:0;
-height:125px;
-justify-content:center;
-width:125px;
+height: 125px;
+width: 125px;
+background: #2e3d49;
+font-size: 0;
+color: #fff;
+border-radius: 8px;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+background: -moz-linear-gradient(-45deg, rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
+/* FF3.6-15 */
+ background: -webkit-linear-gradient(-45deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
+/* Chrome10-25,Safari5.1-6 */
+ background: linear-gradient(135deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
+/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=1 );
+/* IE6-9 fallback on horizontal gradient */
+ box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
-
 .deck .card.open {
-background:linear-gradient(135deg,rgba(235,241,246,1) 0 50% 51% 100%;
-box-shadow:none;
-cursor:default;
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ebf1f6',endColorstr='#d5ebfb',GradientType=1);
-transform:rotate(2deg);
+transform: rotate(2deg);
+background: -moz-linear-gradient(-45deg, rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,.5) 51%, rgba(213,235,251,1) 100%);
+/* FF3.6-15 */
+ background: -webkit-linear-gradient(-45deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,.5) 51%,rgba(213,235,251,1) 100%);
+/* Chrome10-25,Safari5.1-6 */
+ background: linear-gradient(135deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,.5) 51%,rgba(213,235,251,1) 100%);
+/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=1 );
+/* IE6-9 fallback on horizontal gradient */
+ cursor: default;
+box-shadow: none;
 }
-
 .deck .card.show {
--moz-animation:spin 4s linear infinite;
--webkit-animation:spin 4s linear infinite;
-animation:spin 4s linear infinite;
-border-style:ridge;
-font-size:53px;
+font-size: 53px;
+border-style: ridge;
+-webkit-animation: spin 4s linear infinite;
+-moz-animation: spin 4s linear infinite;
+animation: spin 4s linear infinite;
 }
-
+@-moz-keyframes spin {
+100% {
+-moz-transform: rotate(360deg);
+}
+}
+ @-webkit-keyframes spin {
+100% {
+-webkit-transform: rotate(360deg);
+}
+}
+ @keyframes spin {
+100% {
+-webkit-transform: rotate(360deg);
+transform: rotate(360deg);
+}
+}
 .deck .card.match {
--moz-animation:none;
--moz-transform-style:preserve-3d;
--webkit-animation:none;
--webkit-transform-style:preserve-3d;
-animation:none;
-background:linear-gradient(135deg,rgba(252,234,187,1) 0 50% 51% 100%;
-cursor:default;
-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fceabb',endColorstr='#fbdf93',GradientType=1);
-font-size:33px;
-outline:12px double transparent;
+cursor: default;
+background: -moz-linear-gradient(-45deg, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 50%, rgba(248,181,0,1) 51%, rgba(251,223,147,1) 100%);
+/* FF3.6-15 */
+ background: -webkit-linear-gradient(-45deg, rgba(252,234,187,1) 0%,rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%);
+/* Chrome10-25,Safari5.1-6 */
+ background: linear-gradient(135deg, rgba(252,234,187,1) 0%,rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%);
+/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+ filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=1 );
+/* IE6-9 fallback on horizontal gradient */
+ font-size: 33px;
+outline: 12px double transparent;
+-webkit-transform-style: preserve-3d;
+-moz-transform-style: preserve-3d;
+-webkit-animation: none;
+-moz-animation: none;
+animation: none;
 }
-
+/* * Styles for the Score Panel */
 h1,.score-panel {
-background:#7e7a7aa1;
-border-radius:25px;
-color:#0ac7f1;
-margin:.5em;
-padding:0 12px;
+color: #0ac7f1;
+background: #7e7a7aa1;
+border-radius: 25px;
+margin: .5em;
+padding: 0px 12px 0px 12px;
 }
-
 .score-panel {
-border-style:ridge;
-position:absolute;
-text-align:left;
-top:79px;
+text-align: left;
+top: 79px;
+position: absolute;
+border-style: ridge;
 }
-
 .score-panel .stars {
-display:inline-block;
-margin:0 5px 0 0;
-padding:0;
+margin: 0;
+padding: 0;
+display: inline-block;
+margin: 0 5px 0 0;
 }
-
 .score-panel .stars li {
-display:inline-block;
-list-style:none;
+list-style: none;
+display: inline-block;
 }
-
 .score-panel .restart {
-cursor:pointer;
-float:right;
-margin-left:1.2em;
+float: right;
+cursor: pointer;
+margin-left: 1.2em;
 }
