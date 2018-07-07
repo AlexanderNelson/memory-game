@@ -79,8 +79,8 @@ function addCard(chosen) {
     console.log(selectedCards);
     if (selectedCards.length === 2) {
       console.log('array full, waiting for match function')
-      isItMatched();
       counter();
+      isItMatched();
     }
   }
 };
@@ -134,7 +134,6 @@ function gameOver() {
 
 //move counter
 let turns = 0;
-
 function counter() {
   turns++;
   const movesText = document.querySelector('.moves');
@@ -152,9 +151,19 @@ function darkStar() {
   }
 };
 
+function countStars() {
+  const starStat = document.querySelectorAll('.stars li');
+  starsRemain = 0;
+  for (star of starStat) {
+  	if (star.style.color === '') {
+  		starsRemain++;
+  	}
+  }
+  console.log(starsRemain, 'stars remaining')
+  return starsRemain;
+};
+
 //get time
-
-
 let startTime = 0;
 function recordStartTime() {
   if (!startTime) { //prevents startTime reassignment after every clicked card
@@ -169,10 +178,10 @@ function recordStopTime() {
   console.log('stopTime =', stopTime);
 };
 
-let timePlayed = 0;
 function calculateTimePlayed() {
-	timePlayed = ((stopTime - startTime) / 1000); //converts to seconds
+  const timePlayed = ((stopTime - startTime) / 1000); //converts to seconds
   console.log('timePlayed = ', timePlayed, 'seconds');
+  return timePlayed;
 };
 
 //reset game
@@ -195,9 +204,13 @@ function toggleStats() {
 
 function launchPlayerStats() {
   const timeStat = document.querySelector('.timer');
+  const time = calculateTimePlayed();
   const movesStat = document.querySelector('.attempt-number');
+  const starStat = document.querySelector('.stars-remaining');
+  const stars = countStars();
 
-  timeStat.innerHTML = `Time to Complete:   ${timePlayed}  Seconds`;
+  timeStat.innerHTML = `Time to Complete:   ${time}  Seconds`;
   movesStat.innerHTML = `Attempts Needed:   ${turns}`;
+  starStat.innerHTML = `Stars Remaining:   ${stars}  Stars`
   toggleStats();
 };
