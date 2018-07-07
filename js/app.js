@@ -7,6 +7,7 @@ let selectedCards = [];
 let matchCount = 0;
 let list = document.querySelectorAll('li.card');
 
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -47,6 +48,7 @@ function shuffle(array) {
  function startGame() {
  	resetGame();
  	console.log('***start sequence initiated***')
+ 	toggleStats();
  };
 
 const deck = document.querySelector('.deck');
@@ -96,8 +98,10 @@ function isItMatched() {
     // alert('DING DING! You got a match! OMG!!!');
     matchCount++;
     console.log('matchCount', matchCount);
-    gameOver();
     nextPick();
+    if (matchCount === 4) {
+    	 gameOver();
+    }
   } else {
     unmatched();
   }
@@ -109,6 +113,7 @@ function unmatched() {
     selectedCards.forEach(function(chosen) {
       chosen.classList.remove('open', 'show');
     });
+    darkStar();
     nextPick();
   }, 1000);
   console.log('BUUZZZ');
@@ -122,15 +127,12 @@ function nextPick() {
 
 //all cards matched, disply final score
 function gameOver() {
-  if (matchCount === 4) {
     recordStopTime();
     calculateTimePlayed();
     launchPlayerStats();
-  }
-}
+};
 
 //move counter
-
 let turns = 0;
 
 function counter() {
@@ -140,29 +142,36 @@ function counter() {
 };
 
 //stars drop as more turns are needed
-function stars() {
+function darkStar() {
   const starBoard = document.querySelectorAll('.stars li');
-  star.forEach
+  for (star of starBoard) {
+  	if (star.style.color !== 'gray') {
+  		star.style.color = 'gray';
+  		break;
+  	}
+  }
 };
 
 //get time
-let startTime = 0;
-let stopTime = 0;
 
+
+let startTime = 0;
 function recordStartTime() {
   if (!startTime) { //prevents startTime reassignment after every clicked card
     startTime = Date.now();
     console.log('startTime =', startTime);
-  };
+  }
 };
 
+let stopTime = 0;
 function recordStopTime() {
   stopTime = Date.now();
   console.log('stopTime =', stopTime);
 };
 
+let timePlayed = 0;
 function calculateTimePlayed() {
-  const timePlayed = ((stopTime - startTime) / 1000); //converts to seconds
+	timePlayed = ((stopTime - startTime) / 1000); //converts to seconds
   console.log('timePlayed = ', timePlayed, 'seconds');
 };
 
@@ -175,10 +184,8 @@ function resetGame() {
   console.log('replayButton clicked');
   list.forEach(function(card) {
     card.classList.remove('open', 'show', 'match');
-  });
+  })
   console.log('classes remaining', list)
-  // list[0].classList.remove('open', 'show');
-  // console.log('remaining classes', list);
 };
 
 function toggleStats() {
@@ -186,5 +193,11 @@ function toggleStats() {
 	statsBackground.classList.toggle('hide');
 };
 
-toggleStats()
-toggleStats()
+function launchPlayerStats() {
+  const timeStat = document.querySelector('.timer');
+  const movesStat = document.querySelector('.attempt-number');
+
+  timeStat.innerHTML = `Time to Complete:   ${timePlayed}  Seconds`;
+  movesStat.innerHTML = `Attempts Needed:   ${turns}`;
+  toggleStats();
+};
