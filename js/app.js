@@ -1,6 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
+const allCards = document.querySelector('.deck');
 let selectedCards = [];
 
 //matched cards counter
@@ -8,8 +9,8 @@ let matchCount = 0;
 let list = document.querySelectorAll('li.card');
 let turns = 0;
 let startTime = 0;
+//this will prevent interval being called multiple times when set to 1
 let timedisplayed = 0;
-
 
 /*
  * Display the cards on the page
@@ -34,6 +35,13 @@ function shuffle(array) {
   return array;
 }
 
+function shuffleCards() {
+	const unshuffledCards = Array.from(document.querySelectorAll('.deck li'));
+	const shuffledCards = shuffle(unshuffledCards);
+	for (card of shuffledCards) {
+		allCards.appendChild(card);
+	}
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -215,6 +223,7 @@ function resetGame() {
     timer.innerHTML = `Time:  Pick a card`;
   });
   console.log('classes remaining', list);
+  shuffleCards();
 };
 
 function toggleStats() {
