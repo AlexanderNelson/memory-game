@@ -6,7 +6,8 @@ let selectedCards = [];
 //matched cards counter
 let matchCount = 0;
 let list = document.querySelectorAll('li.card');
-
+let turns = 0;
+let startTime = 0;
 
 /*
  * Display the cards on the page
@@ -133,7 +134,7 @@ function gameOver() {
 };
 
 //move counter
-let turns = 0;
+
 function counter() {
   turns++;
   const movesText = document.querySelector('.moves');
@@ -164,7 +165,6 @@ function countStars() {
 };
 
 //get time
-let startTime = 0;
 function recordStartTime() {
   if (!startTime) { //prevents startTime reassignment after every clicked card
     startTime = Date.now();
@@ -190,10 +190,22 @@ replayButton.addEventListener('click', resetGame);
 
 
 function resetGame() {
+  const starBoard = document.querySelectorAll('.stars li');
+  for (star of starBoard) {
+  	if (star.style.color !== '#ffff00') {
+  		star.style.color = '#ffff00';
+  	}
+  }
   console.log('replayButton clicked');
+  startTime = 0;
+  matchCount = 0;
+  console.log('matchCount reset', matchCount);
+  turns = 0;
+  const movesText = document.querySelector('.moves');
+  movesText.innerHTML = turns;
   list.forEach(function(card) {
     card.classList.remove('open', 'show', 'match');
-  })
+  });
   console.log('classes remaining', list)
 };
 
@@ -212,5 +224,19 @@ function launchPlayerStats() {
   timeStat.innerHTML = `Time to Complete:   ${time}  Seconds`;
   movesStat.innerHTML = `Attempts Needed:   ${turns}`;
   starStat.innerHTML = `Stars Remaining:   ${stars}  Stars`
+
+
+  setTimeout(() => {
   toggleStats();
+  }, 1500);
 };
+
+
+//make stats buttons work
+document.querySelector('.stats-quit-btn').addEventListener('click', () => {
+	toggleStats();
+});
+
+document.querySelector('.stats-play-btn').addEventListener('click', () => {
+	startGame();
+});
