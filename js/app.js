@@ -32,6 +32,7 @@ function shuffle(array) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
+
   return array;
 }
 
@@ -54,51 +55,6 @@ function shuffleCards() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-<<<<<<< HEAD
-const displayTimer = () => {
-  const timer = document.querySelector('.clock');
-  timedisplayed = 1;
-  clockSet = setInterval(function() {
-    currentTime = Date.now();
-    console.log('currentTime', currentTime);
-    timer.innerHTML = `Time:   ${((currentTime - startTime) / 1000).toFixed(0)}  Seconds`;
-  }, 1000);
-};
-
-const clockStop = () => {
-  clearInterval(clockSet);
-  console.log('clearInterval')
-};
-
-//reset game
-const resetGame = () => {
-  const starBoard = document.querySelectorAll('.stars li');
-  for (star of starBoard) {
-    if (star.style.color !== '#ffff00') {
-      star.style.color = '#ffff00';
-    }
-  }
-  clockStop();
-  startTime = "";
-  matchCount = "";
-  turns = 0;
-  currentTime = "";
-  timedisplayed = "";
-  const movesText = document.querySelector('.moves');
-  movesText.innerHTML = turns;
-  list.forEach(function(card) {
-    card.classList.remove('open', 'show', 'match');
-    const timer = document.querySelector('.clock');
-    timer.innerHTML = `Time:  Pick a card`;
-  });
-  shuffleCards();
-};
-const replayButton = document.querySelector('.restart');
-replayButton.addEventListener('click', resetGame);
-
-||||||| merged common ancestors
-startGame(); //comment out for tile test intro
-=======
 const displayTimer = () => {
   const timer = document.querySelector('.clock');
   timedisplayed = 1;
@@ -144,20 +100,8 @@ const toggleStats = () => {
   const statsBackground = document.querySelector('.stats-background');
   statsBackground.classList.toggle('hide');
 };
->>>>>>> gh-pages
-
-<<<<<<< HEAD
-const toggleStats = () => {
-  const statsBackground = document.querySelector('.stats-background');
-  statsBackground.classList.toggle('hide');
-};
 
 const startGame = () => {
-||||||| merged common ancestors
-function startGame() {
-=======
-const startGame = () => {
->>>>>>> gh-pages
   resetGame();
   toggleStats();
 };
@@ -185,6 +129,8 @@ const flipCard = chosen => {
     chosen.classList.toggle('show');
   }
 };
+
+
 
 // add cards to list
 const addCard = chosen => {
