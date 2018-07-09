@@ -55,13 +55,60 @@ function shuffleCards() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-startGame(); //comment out for tile test intro
+const displayTimer = () => {
+  const timer = document.querySelector('.clock');
+  timedisplayed = 1;
+  clockSet = setInterval(function() {
+    currentTime = Date.now();
+    console.log('currentTime', currentTime);
+    timer.innerHTML = `Time:   ${((currentTime - startTime) / 1000).toFixed(0)}  Seconds`;
+  }, 1000);
+};
 
-function startGame() {
+const clockStop = () => {
+  clearInterval(clockSet);
+  console.log('clearInterval')
+};
+
+//reset game
+const resetGame = () => {
+  const starBoard = document.querySelectorAll('.stars li');
+  for (star of starBoard) {
+    if (star.style.color !== '#ffff00') {
+      star.style.color = '#ffff00';
+    }
+  }
+  clockStop();
+  startTime = "";
+  matchCount = "";
+  turns = 0;
+  currentTime = "";
+  timedisplayed = "";
+  const movesText = document.querySelector('.moves');
+  movesText.innerHTML = turns;
+  list.forEach(function(card) {
+    card.classList.remove('open', 'show', 'match');
+    const timer = document.querySelector('.clock');
+    timer.innerHTML = `Time:  Pick a card`;
+  });
+  shuffleCards();
+};
+const replayButton = document.querySelector('.restart');
+replayButton.addEventListener('click', resetGame);
+
+
+const toggleStats = () => {
+  const statsBackground = document.querySelector('.stats-background');
+  statsBackground.classList.toggle('hide');
+};
+
+const startGame = () => {
   resetGame();
   console.log('***start sequence initiated***')
   toggleStats();
 };
+
+startGame(); //comment out for tile test intro
 
 const deck = document.querySelector('.deck');
 
@@ -78,7 +125,7 @@ deck.addEventListener('click', event => {
 });
 
 //show card
-function flipCard(chosen) {
+const flipCard = chosen => {
   if (selectedCards.length < 2) {
     chosen.classList.toggle('open'); //classList and toggle- https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
     chosen.classList.toggle('show');
@@ -88,7 +135,7 @@ function flipCard(chosen) {
 
 
 // add cards to list
-function addCard(chosen) {
+const addCard = chosen => {
   if (selectedCards.length < 2) {
     selectedCards.push(chosen);
     console.log(selectedCards);
@@ -101,7 +148,7 @@ function addCard(chosen) {
 };
 
 //matched, lock open
-function isItMatched() {
+const isItMatched = () => {
   const isCardClassNameEqual = (firstCard, secondCard) => firstCard.firstElementChild.className === secondCard.firstElementChild.className;
   if (isCardClassNameEqual(selectedCards[0], selectedCards[1])) {
     // selectedCards.classList.toggle('match');
@@ -122,7 +169,7 @@ function isItMatched() {
 };
 
 //unmatched, remove from list, hide
-function unmatched() {
+const unmatched = () => {
   setTimeout(() => {
     selectedCards.forEach(function(chosen) {
       chosen.classList.remove('open', 'show');
@@ -134,13 +181,13 @@ function unmatched() {
 };
 
 //clears array to continue to next two picks
-function nextPick() {
+const nextPick = () => {
   selectedCards.length = 0;
   console.log(selectedCards, 'array empty');
 };
 
 //all cards matched, disply final score
-function gameOver() {
+const gameOver = () => {
   recordStopTime();
   calculateTimePlayed();
   launchPlayerStats();
@@ -149,7 +196,7 @@ function gameOver() {
 
 //move counter
 
-function counter() {
+const counter = () => {
   turns++;
   const movesText = document.querySelector('.moves');
   movesText.innerHTML = turns;
@@ -165,7 +212,7 @@ function counter() {
 
 //stars drop if turn is failed when called on unmatched function
 //use on 10 star game
-function darkStar() {
+const darkStar = () => {
   const starBoard = document.querySelectorAll('.stars li');
   for (star of starBoard) {
     if (star.style.color !== 'gray') {
@@ -175,7 +222,7 @@ function darkStar() {
   }
 };
 
-function countStars() {
+const countStars = () => {
   const starStat = document.querySelectorAll('.stars li');
   starsRemain = 0;
   for (star of starStat) {
@@ -188,7 +235,7 @@ function countStars() {
 };
 
 //get time
-function recordStartTime() {
+const recordStartTime = () => {
   if (!startTime) { //prevents startTime reassignment after every clicked card
     startTime = Date.now();
     console.log('startTime =', startTime);
@@ -197,53 +244,18 @@ function recordStartTime() {
 
 let stopTime = 0;
 
-function recordStopTime() {
+const recordStopTime = () => {
   stopTime = Date.now();
   console.log('stopTime =', stopTime);
 };
 
-function calculateTimePlayed() {
+const calculateTimePlayed = () => {
   const timePlayed = ((stopTime - startTime) / 1000); //converts to seconds
   console.log('timePlayed = ', timePlayed, 'seconds');
   return timePlayed;
 };
 
-//reset game
-let replayButton = document.querySelector('.restart');
-replayButton.addEventListener('click', resetGame);
-
-function resetGame() {
-  const starBoard = document.querySelectorAll('.stars li');
-  for (star of starBoard) {
-    if (star.style.color !== '#ffff00') {
-      star.style.color = '#ffff00';
-    }
-  }
-  console.log('replayButton clicked');
-  clockStop();
-  startTime = "";
-  matchCount = "";
-  console.log('matchCount reset', matchCount);
-  turns = "";
-  currentTime = "";
-  timedisplayed = "";
-  const movesText = document.querySelector('.moves');
-  movesText.innerHTML = turns;
-  list.forEach(function(card) {
-    card.classList.remove('open', 'show', 'match');
-    const timer = document.querySelector('.clock');
-    timer.innerHTML = `Time:  Pick a card`;
-  });
-  console.log('classes remaining', list);
-  shuffleCards();
-};
-
-function toggleStats() {
-  const statsBackground = document.querySelector('.stats-background');
-  statsBackground.classList.toggle('hide');
-};
-
-function launchPlayerStats() {
+const launchPlayerStats = () => {
   const timeStat = document.querySelector('.timer');
   const time = calculateTimePlayed();
   const movesStat = document.querySelector('.attempt-number');
@@ -267,18 +279,3 @@ document.querySelector('.stats-quit-btn').addEventListener('click', () => {
 document.querySelector('.stats-play-btn').addEventListener('click', () => {
   startGame();
 });
-
-function displayTimer() {
-  const timer = document.querySelector('.clock');
-  timedisplayed = 1;
-  clockSet = setInterval(function() {
-    currentTime = Date.now();
-    console.log('currentTime', currentTime);
-    timer.innerHTML = `Time:   ${((currentTime - startTime) / 1000).toFixed(0)}  Seconds`;
-  }, 1000);
-};
-
-function clockStop() {
-  clearInterval(clockSet);
-  console.log('clearInterval')
-};
