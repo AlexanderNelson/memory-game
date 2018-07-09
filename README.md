@@ -50,9 +50,9 @@ Click "Player" button on modal to play again or "quitter" button to close modal 
 
 Add:
 
-Start game indicator/button
-Top Score- Stars, Score and Time
-Web Site- Make game web accessible
+* Start game indicator/button
+* Top Score- Stars, Score and Time
+* Web Site- Make game web accessible
 
 
 Contributing
