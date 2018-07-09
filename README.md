@@ -40,7 +40,7 @@ Every two cards will check for a match.
 
 Mismatched cards will deduct 1 of 10 stars.
 
-Matched cards will stay open until are cards are matched.
+Matched cards will stay open until all cards are matched.
 
 Modal will open with stats after end of game.
 
