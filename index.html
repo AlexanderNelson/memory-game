@@ -1,116 +1,112 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>Double Diamonds</title>
-    <meta name="description" content="">
-    <!-- <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
-    <script src="https://use.fontawesome.com/598b843861.js"></script>
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet" href="css/app.css">
-
+  <meta charset="utf-8">
+  <title>Double Diamonds</title>
+  <meta name="description" content="">
+  <!-- <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
+  <script src="https://use.fontawesome.com/598b843861.js"></script>
+  <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+  <link rel="stylesheet" href="css/app.css">
 </head>
+
 <body>
-    <div class="stats-background" class="hide">
-        <div class="stats">
-            <div class="stats-heading">
-                <h1 class="stats-title">Here's How You Did!</h1>
-                <span class="stats-close-btn">-Close-</span>
-            </div>
-            <div class="stats-list">
-                <span class="timer">Time To Complete: </span>
-                <span class="stars-remaining">Stars Remaining: </span>
-                <span class=attempt-number>Attempts Needed: </span>
-            </div>
-            <div class="stats-play-quit">
-                <button class="stats-quit-btn">Quitter</button>
-                <button class="stats-play-btn">Player</button>
-            </div>
-        </div>
+  <div class="stats-background" class="hide">
+    <div class="stats">
+      <div class="stats-heading">
+        <h1 class="stats-title">Here's How You Did!</h1>
+      </div>
+      <div class="stats-list">
+        <span class="timer">Time To Complete: </span>
+        <span class="stars-remaining">Stars Remaining: </span>
+        <span class=attempt-number>Attempts Needed: </span>
+      </div>
+      <div class="stats-play-quit">
+        <button class="stats-quit-btn">Quitter</button>
+        <button class="stats-play-btn">Player</button>
+      </div>
     </div>
-    <div class="container" >
-        <div class="sliding-background"></div>
-        <header>
-            <h1>Double Diamonds</h1>
-        </header>
+  </div>
+  <div class="container">
+    <div class="sliding-background"></div>
+    <header>
+      <h1>Double Diamonds</h1>
+    </header>
 
-        <section class="score-panel">
+    <section class="score-panel">
+      <div class="clock">Time: </div>
+      <ul class="stars">
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+      </ul>
+      <span class="moves">0</span> Moves
+      <div class="restart">
+        <i class="fa fa-repeat"></i>
+      </div>
+    </section>
 
+    <ul class="deck">
+      <li class="card">
+        <i class="fa fa-diamond"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-paper-plane-o"></i>
+      </li>
+      <li class="card match">
+        <i class="fa fa-anchor"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-bolt"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-cube"></i>
+      </li>
+      <li class="card match">
+        <i class="fa fa-anchor"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-leaf"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-bicycle"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-diamond"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-bomb"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-leaf"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-bomb"></i>
+      </li>
+      <li class="card open show">
+        <i class="fa fa-bolt"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-bicycle"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-paper-plane-o"></i>
+      </li>
+      <li class="card">
+        <i class="fa fa-cube"></i>
+      </li>
+    </ul>
+  </div>
 
-            <div class="clock">Time: </div>
-
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
-
-        	<span class="moves">0</span> Moves
-
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
-        </section>
-
-        <ul class="deck">
-            <li class="card">
-                <i class="fa fa-diamond"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
-            </li>
-            <li class="card match">
-                <i class="fa fa-anchor"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bolt"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-cube"></i>
-            </li>
-            <li class="card match">
-                <i class="fa fa-anchor"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-leaf"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bicycle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-diamond"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bomb"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-leaf"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bomb"></i>
-            </li>
-            <li class="card open show">
-                <i class="fa fa-bolt"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bicycle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-cube"></i>
-            </li>
-        </ul>
-    </div>
-
-    <script src="js/app.js"></script>
+  <script src="js/app.js"></script>
 </body>
+
 </html>

@@ -1,8 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
- const allCards = document.querySelector('.deck');
- let selectedCards = [];
+const allCards = document.querySelector('.deck');
+let selectedCards = [];
 
 //matched cards counter
 let matchCount = 0;
@@ -23,7 +23,7 @@ let clockSet;
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
   var currentIndex = array.length,
-  temporaryValue, randomIndex;
+    temporaryValue, randomIndex;
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
@@ -37,11 +37,11 @@ function shuffle(array) {
 }
 
 function shuffleCards() {
-	const unshuffledCards = Array.from(document.querySelectorAll('.deck li'));
-	const shuffledCards = shuffle(unshuffledCards);
-	for (card of shuffledCards) {
-		allCards.appendChild(card);
-	}
+  const unshuffledCards = Array.from(document.querySelectorAll('.deck li'));
+  const shuffledCards = shuffle(unshuffledCards);
+  for (card of shuffledCards) {
+    allCards.appendChild(card);
+  }
 }
 
 /*
@@ -160,7 +160,7 @@ function counter() {
 //use on 3 star game
 // function starSystem() {
 //   if (turns === 12 || turns === 16){
-//   	darkStar();
+//    darkStar();
 // };
 
 //stars drop if turn is failed when called on unmatched function
@@ -271,11 +271,11 @@ document.querySelector('.stats-play-btn').addEventListener('click', () => {
 function displayTimer() {
   const timer = document.querySelector('.clock');
   timedisplayed = 1;
-  clockSet  = setInterval(function () {
+  clockSet = setInterval(function() {
     currentTime = Date.now();
     console.log('currentTime', currentTime);
     timer.innerHTML = `Time:   ${((currentTime - startTime) / 1000).toFixed(0)}  Seconds`;
-    }, 1000);
+  }, 1000);
 };
 
 function clockStop() {

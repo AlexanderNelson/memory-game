@@ -1,238 +1,247 @@
 html {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-*, *::before, *::after {
-box-sizing: inherit;
-transition: all 0.3s;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  transition: all 0.3s;
 }
 
-html, body {
-width: 100%;
-height: 100%;
-margin: 0;
-padding: 0;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-/* background: #fff url('../img/geometry2.png');
-*/
- /* Background pattern from Subtle Patterns */
- font-family: 'Coda', cursive;
+  font-family: 'Coda', cursive;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .container {
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-overflow: hidden;
-}
-
-.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .sliding-background {
-background: url("../img/geometry5.png") repeat-x;
-position: absolute;
-background-repeat: repeat;
-z-index: -1;
-height: 1150px;
-width: 5076px;
-animation: slide 360s linear infinite;
+  background: url("../img/geometry5.png") repeat-x;
+  position: absolute;
+  background-repeat: repeat;
+  z-index: -1;
+  height: 1150px;
+  width: 5076px;
+  animation: slide 360s linear infinite;
 }
+
 @keyframes slide {
-0% {
-transform: translate3d(0, 0, 0);
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-1692px, 0, 0);
+  }
 }
- 100% {
-transform: translate3d(-1692px, 0, 0);
-}
-}
-/* * Styles for the deck of cards */
+
+/*Game styles*/
 .deck {
-width: 550px;
-min-height: 550px;
-background: -moz-linear-gradient(-45deg, rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
-/* FF3.6-15 */
- background: -webkit-linear-gradient(-45deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
-/* Chrome10-25,Safari5.1-6 */
- background: linear-gradient(135deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
-/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
- filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=1 );
-/* IE6-9 fallback on horizontal gradient */
- padding: 32px;
-border-radius: 10px;
-box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-align-items: center;
-margin: 0 0 3em;
+  width: 550px;
+  min-height: 550px;
+  background: -moz-linear-gradient(-45deg, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgba(137, 195, 235, 1) 51%, rgba(213, 235, 251, 1) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgba(137, 195, 235, 1) 51%, rgba(213, 235, 251, 1) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgba(137, 195, 235, 1) 51%, rgba(213, 235, 251, 1) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  padding: 32px;
+  border-radius: 10px;
+  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 3em;
 }
+
 .deck .card {
-transform: rotate(45deg);
-height: 100px;
-width: 100px;
-background: #2e3d49;
-font-size: 0;
-color: #fff;
-border-radius: 8px;
-cursor: pointer;
-display: flex;
-justify-content: center;
-align-items: center;
-background: -moz-linear-gradient(-45deg, rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,1) 51%, rgba(213,235,251,1) 100%);
-/* FF3.6-15 */
- background: -webkit-linear-gradient(-45deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
-/* Chrome10-25,Safari5.1-6 */
- background: linear-gradient(135deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,1) 51%,rgba(213,235,251,1) 100%);
-/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
- filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=1 );
-/* IE6-9 fallback on horizontal gradient */
- box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+  transform: rotate(45deg);
+  height: 100px;
+  width: 100px;
+  background: #2e3d49;
+  font-size: 0;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: -moz-linear-gradient(-45deg, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgba(137, 195, 235, 1) 51%, rgba(213, 235, 251, 1) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgba(137, 195, 235, 1) 51%, rgba(213, 235, 251, 1) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgba(137, 195, 235, 1) 51%, rgba(213, 235, 251, 1) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
+
 .deck .card.open {
-transform: rotate(2deg);
-background: -moz-linear-gradient(-45deg, rgba(235,241,246,1) 0%, rgba(171,211,238,1) 50%, rgba(137,195,235,.5) 51%, rgba(213,235,251,1) 100%);
-/* FF3.6-15 */
- background: -webkit-linear-gradient(-45deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,.5) 51%,rgba(213,235,251,1) 100%);
-/* Chrome10-25,Safari5.1-6 */
- background: linear-gradient(135deg, rgba(235,241,246,1) 0%,rgba(171,211,238,1) 50%,rgba(137,195,235,.5) 51%,rgba(213,235,251,1) 100%);
-/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
- filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=1 );
-/* IE6-9 fallback on horizontal gradient */
- cursor: default;
-box-shadow: none;
+  transform: rotate(2deg);
+  background: -moz-linear-gradient(-45deg, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgba(137, 195, 235, .5) 51%, rgba(213, 235, 251, 1) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgba(137, 195, 235, .5) 51%, rgba(213, 235, 251, 1) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(235, 241, 246, 1) 0%, rgba(171, 211, 238, 1) 50%, rgba(137, 195, 235, .5) 51%, rgba(213, 235, 251, 1) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  cursor: default;
+  box-shadow: none;
 }
+
 .deck .card.show {
-font-size: 53px;
-border-style: ridge;
--webkit-animation: spin 4s linear infinite;
--moz-animation: spin 4s linear infinite;
-animation: spin 4s linear infinite;
+  font-size: 53px;
+  border-style: ridge;
+  -webkit-animation: spin 4s linear infinite;
+  -moz-animation: spin 4s linear infinite;
+  animation: spin 4s linear infinite;
 }
+
 @-moz-keyframes spin {
-100% {
--moz-transform: rotate(360deg);
+  100% {
+    -moz-transform: rotate(360deg);
+  }
 }
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
- @-webkit-keyframes spin {
-100% {
--webkit-transform: rotate(360deg);
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
-}
- @keyframes spin {
-100% {
--webkit-transform: rotate(360deg);
-transform: rotate(360deg);
-}
-}
+
 .deck .card.match,
 .stats-quit-btn,
 .stats-play-btn {
-cursor: default;
-background: -moz-linear-gradient(-45deg, rgba(252,234,187,1) 0%, rgba(252,205,77,1) 50%, rgba(248,181,0,1) 51%, rgba(251,223,147,1) 100%);
-/* FF3.6-15 */
- background: -webkit-linear-gradient(-45deg, rgba(252,234,187,1) 0%,rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%);
-/* Chrome10-25,Safari5.1-6 */
- background: linear-gradient(135deg, rgba(252,234,187,1) 0%,rgba(252,205,77,1) 50%,rgba(248,181,0,1) 51%,rgba(251,223,147,1) 100%);
-/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
- filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93',GradientType=1 );
-/* IE6-9 fallback on horizontal gradient */
- font-size: 33px;
-outline: 12px double transparent;
--webkit-transform-style: preserve-3d;
--moz-transform-style: preserve-3d;
--webkit-animation: none;
--moz-animation: none;
-animation: none;
+  cursor: default;
+  background: -moz-linear-gradient(-45deg, rgba(252, 234, 187, 1) 0%, rgba(252, 205, 77, 1) 50%, rgba(248, 181, 0, 1) 51%, rgba(251, 223, 147, 1) 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, rgba(252, 234, 187, 1) 0%, rgba(252, 205, 77, 1) 50%, rgba(248, 181, 0, 1) 51%, rgba(251, 223, 147, 1) 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, rgba(252, 234, 187, 1) 0%, rgba(252, 205, 77, 1) 50%, rgba(248, 181, 0, 1) 51%, rgba(251, 223, 147, 1) 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#fceabb', endColorstr='#fbdf93', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  font-size: 33px;
+  outline: 12px double transparent;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
 }
+
 /* * Styles for the Score Panel */
 h1,
 .score-panel,
 .clock,
 .stars,
 .moves {
-color: #0ac7f1;
-background: #7e7a7aa1;
-border-radius: 25px;
-/*margin: .5em;*/
-padding: 0px 12px 0px 12px;
-
+  color: #0ac7f1;
+  background: #7e7a7aa1;
+  border-radius: 25px;
+  /*margin: .5em;*/
+  padding: 0px 12px 0px 12px;
 }
+
 .score-panel {
-display: flex;
-text-align: left;
-top: 89px;
-position: absolute;
-border-style: ridge;
-}
-.score-panel .stars {
-margin: 0;
-padding: 0;
-display: inline-block;
-margin: 0 5px 0 0;
-}
-.score-panel .stars li {
-list-style: none;
-display: inline-block;
-color: #ffff00;
-}
-.score-panel .restart {
-float: right;
-cursor: pointer;
-margin-left: 1.2em;
+  display: flex;
+  text-align: left;
+  top: 89px;
+  position: absolute;
+  border-style: ridge;
 }
 
+.score-panel .stars {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+  list-style: none;
+  display: inline-block;
+  color: #ffff00;
+}
+
+.score-panel .restart {
+  float: right;
+  cursor: pointer;
+  margin-left: 1.2em;
+}
 
 /*modal after game end*/
 .stats {
-    z-index: 2;
-    position: relative;
-    width: 500px;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -70%);
-    border-radius: 25px;
-    background: #fff url('../img/geometry4.png');
+  z-index: 2;
+  position: relative;
+  width: 500px;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+  border-radius: 25px;
+  background: #fff url('../img/geometry4.png');
 }
 
 .stats-background {
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0, 0, 0, .5);
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, .5);
 }
 
 .stats-heading {
-    margin:125px 0 0 0;
+  margin: 125px 0 0 0;
 }
 
 .stats-heading,
 .stats-list,
 .stats-close-btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5em 2em;
-    background: none;
-    font-weight: 900;
-    font-size: 1em;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5em 2em;
+  background: none;
+  font-weight: 900;
+  font-size: 1em;
+  flex-direction: column;
 }
 
 .stats-play-quit {
-    display: flex;
-    justify-content: space-between;
-    margin: 8px 24px;
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 24px;
 }
 
 .stats-quit-btn,
@@ -251,6 +260,8 @@ margin-left: 1.2em;
   box-shadow: 0 2px #666;
   transform: translateY(4px);
 }
+
+/*gameplay timer display*/
 .clock {
-    min-width: 169px;
+  min-width: 169px;
 }
