@@ -21,7 +21,7 @@ let clockSet;
  */
 
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
+const shuffle = array => {
   var currentIndex = array.length,
     temporaryValue, randomIndex;
 
@@ -32,6 +32,7 @@ function shuffle(array) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
+
   return array;
 }
 
@@ -128,6 +129,8 @@ const flipCard = chosen => {
     chosen.classList.toggle('show');
   }
 };
+
+
 
 // add cards to list
 const addCard = chosen => {
