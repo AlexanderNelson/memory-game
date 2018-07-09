@@ -74,6 +74,6 @@ Copyright &copy; 2018, Alexander Nelson
 
 
 
-[fontAwesom]: https://fontawesome.com/changelog/latest
+[fontAwesome]: https://fontawesome.com/changelog/latest
 [shield-dependencies]: https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen.svg
 [shield-build]: https://img.shields.io/badge/build-passing-brightgreen.svg
