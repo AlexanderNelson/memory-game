@@ -113,7 +113,7 @@ function isItMatched() {
     matchCount++;
     console.log('matchCount', matchCount);
     nextPick();
-    if (matchCount === 4) {
+    if (matchCount === 8) {
       gameOver();
     }
   } else {
