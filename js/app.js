@@ -32,7 +32,6 @@ function shuffle(array) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
-
   return array;
 }
 
@@ -60,14 +59,12 @@ const displayTimer = () => {
   timedisplayed = 1;
   clockSet = setInterval(function() {
     currentTime = Date.now();
-    console.log('currentTime', currentTime);
     timer.innerHTML = `Time:   ${((currentTime - startTime) / 1000).toFixed(0)}  Seconds`;
   }, 1000);
 };
 
 const clockStop = () => {
   clearInterval(clockSet);
-  console.log('clearInterval')
 };
 
 //reset game
@@ -84,6 +81,7 @@ const resetGame = () => {
   turns = 0;
   currentTime = "";
   timedisplayed = "";
+  selectedCards = [];
   const movesText = document.querySelector('.moves');
   movesText.innerHTML = turns;
   list.forEach(function(card) {
@@ -104,7 +102,6 @@ const toggleStats = () => {
 
 const startGame = () => {
   resetGame();
-  console.log('***start sequence initiated***')
   toggleStats();
 };
 
@@ -132,15 +129,11 @@ const flipCard = chosen => {
   }
 };
 
-
-
 // add cards to list
 const addCard = chosen => {
   if (selectedCards.length < 2) {
     selectedCards.push(chosen);
-    console.log(selectedCards);
     if (selectedCards.length === 2) {
-      console.log('array full, waiting for match function')
       counter();
       isItMatched();
     }
@@ -154,11 +147,8 @@ const isItMatched = () => {
     // selectedCards.classList.toggle('match');
     selectedCards[0].classList.toggle('match');
     selectedCards[1].classList.toggle('match');
-    console.log('picked cards', selectedCards[0], selectedCards[1])
-    console.log('ding ding');
     // alert('DING DING! You got a match! OMG!!!');
     matchCount++;
-    console.log('matchCount', matchCount);
     nextPick();
     if (matchCount === 8) {
       gameOver();
@@ -177,13 +167,11 @@ const unmatched = () => {
     darkStar();
     nextPick();
   }, 1000);
-  console.log('BUUZZZ');
 };
 
 //clears array to continue to next two picks
 const nextPick = () => {
   selectedCards.length = 0;
-  console.log(selectedCards, 'array empty');
 };
 
 //all cards matched, disply final score
@@ -200,7 +188,6 @@ const counter = () => {
   turns++;
   const movesText = document.querySelector('.moves');
   movesText.innerHTML = turns;
-  console.log('turns', turns);
 };
 
 //starSystem() will use number of turns rather than failed turns to deduct stars
@@ -230,7 +217,6 @@ const countStars = () => {
       starsRemain++;
     }
   }
-  console.log(starsRemain, 'stars remaining')
   return starsRemain;
 };
 
@@ -238,7 +224,6 @@ const countStars = () => {
 const recordStartTime = () => {
   if (!startTime) { //prevents startTime reassignment after every clicked card
     startTime = Date.now();
-    console.log('startTime =', startTime);
   }
 };
 
@@ -246,12 +231,10 @@ let stopTime = 0;
 
 const recordStopTime = () => {
   stopTime = Date.now();
-  console.log('stopTime =', stopTime);
 };
 
 const calculateTimePlayed = () => {
   const timePlayed = ((stopTime - startTime) / 1000); //converts to seconds
-  console.log('timePlayed = ', timePlayed, 'seconds');
   return timePlayed;
 };
 
