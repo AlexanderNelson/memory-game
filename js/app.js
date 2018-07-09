@@ -1,8 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
-const allCards = document.querySelector('.deck');
-let selectedCards = [];
+ const allCards = document.querySelector('.deck');
+ let selectedCards = [];
 
 //matched cards counter
 let matchCount = 0;
@@ -11,6 +11,7 @@ let turns = 0;
 let startTime = 0;
 //this will prevent interval being called multiple times when set to 1
 let timedisplayed = 0;
+let clockSet;
 
 /*
  * Display the cards on the page
@@ -22,7 +23,7 @@ let timedisplayed = 0;
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
   var currentIndex = array.length,
-    temporaryValue, randomIndex;
+  temporaryValue, randomIndex;
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
@@ -143,6 +144,7 @@ function gameOver() {
   recordStopTime();
   calculateTimePlayed();
   launchPlayerStats();
+  clockStop();
 };
 
 //move counter
@@ -151,9 +153,18 @@ function counter() {
   turns++;
   const movesText = document.querySelector('.moves');
   movesText.innerHTML = turns;
+  console.log('turns', turns);
 };
 
-//stars drop as more turns are needed
+//starSystem() will use number of turns rather than failed turns to deduct stars
+//use on 3 star game
+// function starSystem() {
+//   if (turns === 12 || turns === 16){
+//   	darkStar();
+// };
+
+//stars drop if turn is failed when called on unmatched function
+//use on 10 star game
 function darkStar() {
   const starBoard = document.querySelectorAll('.stars li');
   for (star of starBoard) {
@@ -201,7 +212,6 @@ function calculateTimePlayed() {
 let replayButton = document.querySelector('.restart');
 replayButton.addEventListener('click', resetGame);
 
-
 function resetGame() {
   const starBoard = document.querySelectorAll('.stars li');
   for (star of starBoard) {
@@ -210,11 +220,13 @@ function resetGame() {
     }
   }
   console.log('replayButton clicked');
-  startTime = 0;
-  matchCount = 0;
+  clockStop();
+  startTime = "";
+  matchCount = "";
   console.log('matchCount reset', matchCount);
-  turns = 0;
-  currentTime = 0;
+  turns = "";
+  currentTime = "";
+  timedisplayed = "";
   const movesText = document.querySelector('.moves');
   movesText.innerHTML = turns;
   list.forEach(function(card) {
@@ -259,16 +271,14 @@ document.querySelector('.stats-play-btn').addEventListener('click', () => {
 function displayTimer() {
   const timer = document.querySelector('.clock');
   timedisplayed = 1;
+  clockSet  = setInterval(function () {
+    currentTime = Date.now();
+    console.log('currentTime', currentTime);
+    timer.innerHTML = `Time:   ${((currentTime - startTime) / 1000).toFixed(0)}  Seconds`;
+    }, 1000);
+};
 
-  var clock = setInterval(() => {
-    if (matchCount < 4) {
-      currentTime = Date.now();
-      console.log('currentTime', currentTime);
-      // console.log('playTime', playTime);
-      timer.innerHTML = `Time:   ${((currentTime - startTime) / 1000).toFixed(0)}  Seconds`;
-    }
-    if (matchCount > 3) {
-      clearInterval(clock);
-    }
-  }, 1000);
+function clockStop() {
+  clearInterval(clockSet);
+  console.log('clearInterval')
 };
