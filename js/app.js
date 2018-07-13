@@ -13,6 +13,11 @@ let startTime = 0;
 let timedisplayed = 0;
 let clockSet;
 
+//sounds
+
+var snd = new Audio("../sounds/match-bell.mp3"); // buffers automatically when created
+
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -76,6 +81,7 @@ const resetGame = () => {
       star.style.color = '#ffff00';
     }
   }
+  snd.play();
   clockStop();
   startTime = "";
   matchCount = "";
@@ -127,6 +133,7 @@ const flipCard = chosen => {
   if (selectedCards.length < 2) {
     chosen.classList.toggle('open'); //classList and toggle- https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
     chosen.classList.toggle('show');
+    snd.play();
   }
 };
 
